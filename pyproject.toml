@@ -5,7 +5,15 @@ description = "Add your description here"
 authors = [
     { name = "Aoi-Takahashi", email = "xxx@xxx.com" }
 ]
-dependencies = []
+dependencies = [
+    "transformers>=4.38.2",
+    "kivy[base]>=2.3.0",
+    "kivy_examples>=2.3.0",
+    "matplotlib>=3.8.3",
+    "pandas>=2.2.1",
+    "openpyxl>=3.1.2",
+    "mypy>=1.8.0",
+]
 readme = "README.md"
 requires-python = ">= 3.8"
 
@@ -25,3 +33,6 @@ allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/pm_kun"]
+
+[tool.rye.scripts]
+check = "mypy --strict src/pm_kun/__init__.py"
