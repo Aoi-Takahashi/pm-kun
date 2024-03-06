@@ -1,0 +1,3 @@
+#ignore src/pm-kun/__pycache__/*
+__pycache__/
+*.pyc
