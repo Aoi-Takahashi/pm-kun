@@ -23,16 +23,20 @@ et-xmlfile==1.1.0
     # via openpyxl
 filelock==3.13.1
     # via huggingface-hub
+    # via torch
     # via transformers
 fonttools==4.49.0
     # via matplotlib
 fsspec==2024.2.0
     # via huggingface-hub
+    # via torch
 huggingface-hub==0.21.3
     # via tokenizers
     # via transformers
 idna==3.6
     # via requests
+jinja2==3.1.3
+    # via torch
 kivy==2.3.0
     # via kivy
     # via pm-kun
@@ -43,16 +47,23 @@ kivy-garden==0.1.5
     # via kivy-examples
 kiwisolver==1.4.5
     # via matplotlib
+markupsafe==2.1.5
+    # via jinja2
 matplotlib==3.8.3
     # via pm-kun
+mpmath==1.3.0
+    # via sympy
 mypy==1.8.0
     # via pm-kun
 mypy-extensions==1.0.0
     # via mypy
+networkx==3.2.1
+    # via torch
 numpy==1.26.4
     # via contourpy
     # via matplotlib
     # via pandas
+    # via torchvision
     # via transformers
 openpyxl==3.1.2
     # via pm-kun
@@ -65,6 +76,7 @@ pandas==2.2.1
 pillow==10.2.0
     # via kivy
     # via matplotlib
+    # via torchvision
 pygments==2.17.2
     # via kivy
     # via kivy-examples
@@ -89,8 +101,18 @@ safetensors==0.4.2
     # via transformers
 six==1.16.0
     # via python-dateutil
+sympy==1.12
+    # via torch
 tokenizers==0.15.2
     # via transformers
+torch==2.2.1
+    # via pm-kun
+    # via torchaudio
+    # via torchvision
+torchaudio==2.2.1
+    # via pm-kun
+torchvision==0.17.1
+    # via pm-kun
 tqdm==4.66.2
     # via huggingface-hub
     # via transformers
@@ -99,6 +121,7 @@ transformers==4.38.2
 typing-extensions==4.10.0
     # via huggingface-hub
     # via mypy
+    # via torch
 tzdata==2024.1
     # via pandas
 urllib3==2.2.1
