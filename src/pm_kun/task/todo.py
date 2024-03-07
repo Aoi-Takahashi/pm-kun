@@ -1,5 +1,5 @@
 from datetime import date
-from typing import List, Optional
+from typing import List, Optional, Union
 from pm_kun.type_definition import Priority, Status, ToDo
 
 
@@ -63,11 +63,13 @@ class BaseTask:
                 break
         return None
 
-    def search_task(self, id: str) -> None:
+    def search_task(self, id: str) -> Union[str, None]:
         """
         タスクを検索するメソッド
         Args:
         """
         for task in self.todo_list:
             if task["id"] == id:
-                return task
+                return task["task"]
+            else:
+                return None
