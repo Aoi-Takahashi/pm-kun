@@ -99,6 +99,8 @@ requests==2.31.0
     # via transformers
 safetensors==0.4.2
     # via transformers
+sentencepiece==0.2.0
+    # via pm-kun
 six==1.16.0
     # via python-dateutil
 sympy==1.12
