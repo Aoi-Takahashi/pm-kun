@@ -1,33 +1,33 @@
 import flet as ft
+from pm_kun.screen.chart import chart
+from pm_kun.screen.home import home
+from pm_kun.screen.pmk import pmk
+from pm_kun.screen.task import task
 
 
 def main(page: ft.Page):
-    page.title = "Flet counter example"
-    page.vertical_alignment = ft.MainAxisAlignment.CENTER
+    page.title = "プロマネ君"
 
-    txt_number = ft.TextField(value="0", text_align=ft.TextAlign.RIGHT, width=100)
-
-    def minus_click(e):
-        txt_number.value = str(int(txt_number.value) - 1)
+    def route_change(route):
+        page.views.clear()
+        # Entory point("/")
+        page.views.append(home(page))
+        if page.route == "/todo":
+            page.views.append(task(page))
+        if page.route == "/chart":
+            page.views.append(chart(page))
+        if page.route == "/pmk":
+            page.views.append(pmk(page))
         page.update()
 
-    def plus_click(e):
-        txt_number.value = str(int(txt_number.value) + 1)
-        page.update()
+    def view_pop(view):
+        page.views.pop()
+        top_view = page.views[-1]
+        page.go(top_view.route)
 
-    page.add(
-        ft.Row(
-            [
-                ft.IconButton(ft.icons.REMOVE, on_click=minus_click),
-                txt_number,
-                ft.IconButton(ft.icons.ADD, on_click=plus_click),
-            ],
-            alignment=ft.MainAxisAlignment.CENTER,
-        )
-    )
+    page.on_route_change = route_change
+    page.on_view_pop = view_pop
+    page.go(page.route)
 
 
 ft.app(target=main)
-
-if __name__ == "__main__":
-    main()

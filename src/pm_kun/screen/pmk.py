@@ -1,0 +1,23 @@
+import flet as ft
+
+
+def pmk(page: ft.Page):
+    page.title = "プロマネ君"
+
+    # Widgets
+    title_text = ft.Text("ここにPMアドバイザーを追加する", size=30, text_align="center")
+    back_button = ft.ElevatedButton("Go Home", on_click=lambda _: page.go("/"))
+
+    # Layout
+    column = ft.Column(
+        spacing=20,
+        controls=[title_text, back_button],
+        horizontal_alignment="center",
+        alignment="center",
+    )
+    page.add(column)
+
+    return ft.View(
+        "/pmk",
+        [column],
+    )
