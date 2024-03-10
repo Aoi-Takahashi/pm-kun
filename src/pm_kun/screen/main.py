@@ -1,20 +1,33 @@
-from kivy.app import App
-from kivy.uix.widget import Widget
-
-"""
-「xxx.kv」のxxx部分はclassの「XxxApp」の「Xxx」に対応している
- name "Pmk" is short name in ProjectManagement Kun
-"""
+import flet as ft
 
 
-class PmkGame(Widget):
-    pass
+def main(page: ft.Page):
+    page.title = "Flet counter example"
+    page.vertical_alignment = ft.MainAxisAlignment.CENTER
+
+    txt_number = ft.TextField(value="0", text_align=ft.TextAlign.RIGHT, width=100)
+
+    def minus_click(e):
+        txt_number.value = str(int(txt_number.value) - 1)
+        page.update()
+
+    def plus_click(e):
+        txt_number.value = str(int(txt_number.value) + 1)
+        page.update()
+
+    page.add(
+        ft.Row(
+            [
+                ft.IconButton(ft.icons.REMOVE, on_click=minus_click),
+                txt_number,
+                ft.IconButton(ft.icons.ADD, on_click=plus_click),
+            ],
+            alignment=ft.MainAxisAlignment.CENTER,
+        )
+    )
 
 
-class PmkApp(App):
-    def build(self):
-        return PmkGame()
-
+ft.app(target=main)
 
 if __name__ == "__main__":
-    PmkApp().run()
+    main()

@@ -8,49 +8,81 @@
 #   with-sources: false
 
 -e file:.
+annotated-types==0.6.0
+    # via pydantic
+anyio==4.3.0
+    # via httpx
+    # via starlette
+    # via watchfiles
+arrow==1.3.0
+    # via cookiecutter
+binaryornot==0.4.4
+    # via cookiecutter
 certifi==2024.2.2
+    # via httpcore
+    # via httpx
     # via requests
+chardet==5.2.0
+    # via binaryornot
 charset-normalizer==3.3.2
     # via requests
+click==8.1.7
+    # via cookiecutter
+    # via uvicorn
 contourpy==1.2.0
     # via matplotlib
+cookiecutter==2.6.0
+    # via flet
 cycler==0.12.1
     # via matplotlib
-docutils==0.20.1
-    # via kivy
-    # via kivy-examples
 et-xmlfile==1.1.0
     # via openpyxl
+fastapi==0.110.0
+    # via flet
 filelock==3.13.1
     # via huggingface-hub
     # via torch
     # via transformers
+flet==0.21.1
+    # via pm-kun
+flet-core==0.21.1
+    # via flet-runtime
+flet-runtime==0.21.1
+    # via flet
 fonttools==4.49.0
     # via matplotlib
 fsspec==2024.2.0
     # via huggingface-hub
     # via torch
+h11==0.14.0
+    # via httpcore
+    # via uvicorn
+httpcore==1.0.4
+    # via httpx
+httptools==0.6.1
+    # via uvicorn
+httpx==0.27.0
+    # via flet-runtime
 huggingface-hub==0.21.3
     # via tokenizers
     # via transformers
 idna==3.6
+    # via anyio
+    # via httpx
     # via requests
 jinja2==3.1.3
+    # via cookiecutter
     # via torch
-kivy==2.3.0
-    # via kivy
-    # via pm-kun
-kivy-examples==2.3.0
-    # via pm-kun
-kivy-garden==0.1.5
-    # via kivy
-    # via kivy-examples
 kiwisolver==1.4.5
     # via matplotlib
+markdown-it-py==3.0.0
+    # via rich
 markupsafe==2.1.5
     # via jinja2
 matplotlib==3.8.3
     # via pm-kun
+mdurl==0.1.2
+    # via markdown-it-py
 mpmath==1.3.0
     # via sympy
 mypy==1.8.0
@@ -65,46 +97,73 @@ numpy==1.26.4
     # via pandas
     # via torchvision
     # via transformers
+oauthlib==3.2.2
+    # via flet-runtime
 openpyxl==3.1.2
     # via pm-kun
 packaging==23.2
+    # via flet
     # via huggingface-hub
     # via matplotlib
     # via transformers
 pandas==2.2.1
     # via pm-kun
 pillow==10.2.0
-    # via kivy
     # via matplotlib
     # via torchvision
+pydantic==2.6.3
+    # via fastapi
+pydantic-core==2.16.3
+    # via pydantic
 pygments==2.17.2
-    # via kivy
-    # via kivy-examples
+    # via rich
 pyparsing==3.1.1
     # via matplotlib
+pypng==0.20220715.0
+    # via qrcode
 python-dateutil==2.9.0.post0
+    # via arrow
     # via matplotlib
     # via pandas
+python-dotenv==1.0.1
+    # via uvicorn
+python-slugify==8.0.4
+    # via cookiecutter
 pytz==2024.1
     # via pandas
 pyyaml==6.0.1
+    # via cookiecutter
     # via huggingface-hub
     # via transformers
+    # via uvicorn
+qrcode==7.4.2
+    # via flet
 regex==2023.12.25
     # via transformers
+repath==0.9.0
+    # via flet-core
 requests==2.31.0
+    # via cookiecutter
     # via huggingface-hub
-    # via kivy
-    # via kivy-garden
     # via transformers
+rich==13.7.1
+    # via cookiecutter
 safetensors==0.4.2
     # via transformers
 sentencepiece==0.2.0
     # via pm-kun
 six==1.16.0
     # via python-dateutil
+    # via repath
+sniffio==1.3.1
+    # via anyio
+    # via httpx
+starlette==0.36.3
+    # via fastapi
 sympy==1.12
     # via torch
+text-unidecode==1.3
+    # via python-slugify
 tokenizers==0.15.2
     # via transformers
 torch==2.2.1
@@ -120,11 +179,28 @@ tqdm==4.66.2
     # via transformers
 transformers==4.38.2
     # via pm-kun
+types-python-dateutil==2.8.19.20240106
+    # via arrow
 typing-extensions==4.10.0
+    # via fastapi
     # via huggingface-hub
     # via mypy
+    # via pydantic
+    # via pydantic-core
+    # via qrcode
     # via torch
 tzdata==2024.1
     # via pandas
 urllib3==2.2.1
     # via requests
+uvicorn==0.28.0
+    # via flet
+    # via uvicorn
+uvloop==0.19.0
+    # via uvicorn
+watchdog==4.0.0
+    # via flet
+watchfiles==0.21.0
+    # via uvicorn
+websockets==12.0
+    # via uvicorn
