@@ -1,9 +1,8 @@
 import flet as ft
-from pm_kun.screen.chart import chart
-from pm_kun.screen.unit import create_view
+from pm_kun.screen.bord import view_chart
 from pm_kun.screen.home import view_home
 from pm_kun.screen.pmk import pmk
-from pm_kun.screen.task import Todo, view_task
+from pm_kun.screen.task import view_task
 
 """
 ①各画面の実装をクラス化する
@@ -17,15 +16,17 @@ from pm_kun.screen.task import Todo, view_task
 
 def main(page: ft.Page):
     page.title = "プロマネ君"
+    page.window_width = 1050
+    page.window_height = 800
+    page.data = []
 
-    # Entory Point(Routing)
     def route_change(route):
         page.views.clear()
         page.views.append(view_home(page))
         if page.route == "/todo":
             page.views.append(view_task(page))
         if page.route == "/chart":
-            page.views.append(chart(page))
+            page.views.append(view_chart(page))
         if page.route == "/pmk":
             page.views.append(pmk(page))
         page.update()

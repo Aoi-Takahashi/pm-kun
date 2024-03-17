@@ -1,6 +1,6 @@
 import flet as ft
 
-from pm_kun.screen.unit import create_view
+from pm_kun.screen.util.create_view import create_view
 
 
 def view_home(page: ft.Page):
@@ -16,8 +16,8 @@ def view_home(page: ft.Page):
         page.go("/pmk")
         page.update()
 
-    todo_button = ft.FilledButton(text="タスク一覧", on_click=navigate_todo)
-    chart_button = ft.FilledButton(text="ガントチャート", on_click=navigate_chart)
+    todo_button = ft.FilledButton(text="TODO管理", on_click=navigate_todo)
+    chart_button = ft.FilledButton(text="チケット作成", on_click=navigate_chart)
     pmk_button = ft.FilledButton(text="PMアドバイザー", on_click=navigate_pmk)
     title_text = ft.Text("プロマネ君", size=30, text_align="center")
 
