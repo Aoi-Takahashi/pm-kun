@@ -6,9 +6,22 @@ from pm_kun.screen.util.create_view import create_view
 
 
 def view_chart(page: ft.Page):
-    todos_high = ft.Column()
-    todos_normal = ft.Column()
-    todos_complete = ft.Column()
+    todos_unselected = ft.Column(
+        expand=True,
+        scroll=ft.ScrollMode.AUTO,
+    )
+    todos_high = ft.Column(
+        expand=True,
+        scroll=ft.ScrollMode.AUTO,
+    )
+    todos_normal = ft.Column(
+        expand=True,
+        scroll=ft.ScrollMode.AUTO,
+    )
+    todos_complete = ft.Column(
+        expand=True,
+        scroll=ft.ScrollMode.AUTO,
+    )
 
     def complete_ticket(parent_container: Union[ft.Column, ft.Row], control_id: str):
         def handler(e):
@@ -24,6 +37,13 @@ def view_chart(page: ft.Page):
                     content=Ticket(
                         title=src.content.title,
                         id=src.content.id,
+                        on_positive_button_click=complete_ticket(
+                            todos_complete, src.content.id
+                        ),
+                        on_negative_button_click=delete_ticket(
+                            todos_complete, src.content.id
+                        ),
+                        origin_container=todos_complete,
                     ),
                 )
                 todos_complete.controls.append(completed_task)
@@ -56,11 +76,14 @@ def view_chart(page: ft.Page):
             src.content.origin_container.update()
 
         if from_container == "high":
-            src.content.origin_container = "high"
+            src.content.origin_container = todos_high
         elif from_container == "normal":
-            src.content.origin_container = "normal"
+            src.content.origin_container = todos_normal
         elif from_container == "complete":
-            src.content.origin_container = "complete"
+            src.content.origin_container = todos_complete
+        else:
+            src.content.origin_container = todos_unselected
+
         accept_task = Draggable(
             group="task",
             content=Ticket(
@@ -72,32 +95,41 @@ def view_chart(page: ft.Page):
                 on_negative_button_click=delete_ticket(
                     target_container, src.content.id
                 ),
-                origin_container=target_container,
+                origin_container=src.content.origin_container,
             ),
         )
         target_container.controls.append(accept_task)
         target_container.update()
 
-        for control in unselected_todos.controls:
-            if control.content.id == src.content.id:
-                unselected_todos.controls.remove(control)
-                break
-        unselected_todos.update()
-
     back_button = ft.ElevatedButton("メニューに戻る", on_click=lambda _: page.go("/"))
 
-    unselected_todos = ft.ListView(
-        width=250,
-        controls=[
+    for data in page.data:
+        todos_unselected.controls.append(
             Draggable(
                 data=f"{data['name']}|{data['id']}",
                 group="task",
-                content=Ticket(title=data["name"], id=data["id"]),
+                content=Ticket(
+                    title=data["name"],
+                    id=data["id"],
+                    on_positive_button_click=complete_ticket(
+                        todos_unselected, data["id"]
+                    ),
+                    on_negative_button_click=delete_ticket(
+                        todos_unselected, data["id"]
+                    ),
+                    origin_container=todos_unselected,
+                ),
             )
-            for data in page.data
-        ],
-        expand=1,
-        auto_scroll=True,
+        )
+
+    area_unselected = ft.DragTarget(
+        group="task",
+        content=ft.Container(
+            content=todos_unselected,
+            width=250,
+            height=600,
+        ),
+        on_accept=lambda e: drag_accept(todos_unselected, "none", e),
     )
 
     label_high = ft.Text("重要", size=20, text_align="center")
@@ -152,7 +184,7 @@ def view_chart(page: ft.Page):
     )
 
     display = ft.Row(
-        controls=[unselected_todos, area_high, area_normal, area_complete],
+        controls=[area_unselected, area_high, area_normal, area_complete],
         alignment="center",
     )
 

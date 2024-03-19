@@ -1,6 +1,4 @@
 import flet as ft
-from flet_core import Control, UserControl
-
 from pm_kun.screen.component.todo import Todo
 from pm_kun.screen.util.create_view import create_view
 

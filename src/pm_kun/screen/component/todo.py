@@ -106,7 +106,7 @@ class Todo(UserControl):
     def add_clicked(self, e):
         task = Task(self.new_task.value, self.task_delete, self.update_task_data)
         self.tasks.controls.append(task)
-        self._todos.append({"id": task.id, "name": task.task_name, "completed": False})
+        self._todos.append({"id": task.id, "name": task.task_name})
         self.new_task.value = ""
         self.update()
 
@@ -118,7 +118,7 @@ class Todo(UserControl):
         print(self._todos)
 
     def task_delete(self, task):
-        self._todos = [task for t in self._todos if t["id"] != task.id]
+        self._todos = [t for t in self._todos if t["id"] != task.id]
         self.tasks.controls.remove(task)
         self.update()
 

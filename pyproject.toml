@@ -39,4 +39,4 @@ packages = ["src/pm_kun"]
 
 [tool.rye.scripts]
 check = "mypy --strict src/pm_kun/__init__.py"
-view = "flet run src/pm_kun/screen/main.py --directory --recursive"
+view = "flet run src/pm_kun/__init__.py --directory --recursive"

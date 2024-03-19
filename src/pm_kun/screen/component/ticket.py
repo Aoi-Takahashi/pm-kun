@@ -4,13 +4,6 @@ from flet import UserControl
 
 
 class Ticket(UserControl):
-    """
-    ・チケットの表示構成
-    　①TODO名:TextField
-    　②期限:DatePicker
-    　③完了/削除:IconButton
-    　④完了/削除ボタンを押したら、TODOを完了/削除する
-    """
 
     def __init__(
         self,
